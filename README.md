@@ -4,15 +4,16 @@ ClueLib is a free, open-source generic library written in
 SystemVerilog. ClueLib is provided under MIT license and is available
 on GitHub for forking.
 
-### Revision
+### Changelog
 
-The latest revision is **0.6.1**.
+[Changelog](CHANGELOG.md)
 
 ### Documents
 
 - [Online Documentation](https://kaushalmodi.github.io/cluelib/)
 - Offline Documentation (same contents as the Online Documentation) is
-  available in the `docs/` directory in the `docs` branch.
+  available in the [`docs/` directory in the `docs`
+  branch](https://github.com/kaushalmodi/cluelib/tree/docs/docs).
 
 ### You can try ClueLib without installing it!
 
@@ -25,10 +26,10 @@ The latest revision is **0.6.1**.
 ### How to install
 
 1. `git clone https://github.com/kaushalmodi/cluelib`
-2. Go to the **test** directory: `cd cluelib/test`
+2. Go to the [**test**](test/) directory: `cd cluelib/test`
 3. Check makefile options: `make help`
-4. Run a satity check. Use one of the simulators listed in the previous step:
-   Do `make xlm` for example.
+4. Run a satity check. Use one of the simulators listed in the
+   previous step: Do `make xlm` for example.
 5. If you see no errors, the library is in good shape. See the list of
    compatible simulators below.
 
@@ -40,14 +41,13 @@ The library has been tested on the following simulators:
 
 ### How to use
 
-Compile `src/cl_pkg.sv` (and optional `src/cl_dpi.cc`) with your
-files.
-
-- The `src/cl_pkg.sv` includes all library files.  Make sure your
-  `+incdir` option points to the [**src**](./src/) directory when you compile.
-- By default, DPI-C is disabled. If you want to use the DPI-C,
-  uncomment the **CL_USE_DPI_C** macro in `src/cl_define.svh` and
-  compile the `src/cl_dpi.cc` with the `src/cl_pkg.sv`.
+- The [`src/cl_pkg.sv`](src/cl_pkg.sv) includes all library files. Add
+  this file to your compilation and make sure your `+incdir` option
+  points to the [**src**](src/) directory when you compile.
+- By default, DPI-C is disabled. If you want to use the DPI-C, add
+  `+define+CL_USE_DPI_C` or `-define CL_USE_DPI_C` (check the syntax
+  supported by your compiler) to your compilation options, and also
+  add [`src/cl_dpi.cc`](src/cl_dpi.cc) to the compilation.
 - Sample makefiles are available under the **test** directory.
 
 ### Pull requests policy
