@@ -1,4 +1,16 @@
-## Release Notes
+## Changelog
+
+### 0.7.1
+- Delete `dev/` directory from the `main` branch. It is now available
+  in the `dev` branch.
+
+### 0.7.0
+- `main` branch is the default branch now.
+- Added `xlm` and `clean` Makefile targets.
+- Consolidated `run/` and `test/` content into the `test/` directory.
+- `api/` content is moved to `docs/` directory in `docs` branch. Docs
+  hosted at https://kaushalmodi.github.io/cluelib/ .
+- Add the Cluelib test from edaplayground to the repo.
 
 ### v0.6.1
 - Added `route_node::id` property.
