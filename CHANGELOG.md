@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.7.2
+- Minor cleanup in README files, and RELEASE.md renamed to
+  CHANGELOG.md.
+
 ### 0.7.1
 - Delete `dev/` directory from the `main` branch. It is now available
   in the `dev` branch.
