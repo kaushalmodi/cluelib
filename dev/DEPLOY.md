@@ -1,4 +1,4 @@
-##How to deploy
+## How to deploy
 ```bash
 cd dev
 ```
@@ -14,7 +14,7 @@ git add NEW_CLASS_FILE
 
 ### If `crc/scrambler` TeX files have been updated:
 ```bash
-make tex 
+make tex
 ```
 
 ### Common:
@@ -36,7 +36,7 @@ git diff | cat
 cd dev
 make revision # update the revision numbers
 
-# Make sure there is no subdirectory under src/, 
+# Make sure there is no subdirectory under src/,
 # otherwise HTML will be created for the subdirectories, too.
 
 make
@@ -65,6 +65,5 @@ git push
 ### If you need to clean the ModelSim work directory:
 
 ```bash
-make clean_lib 
+make clean_lib
 ```
-
