@@ -16,7 +16,11 @@ The latest revision is **0.6.1**.
 
 ### You can try ClueLib without installing it!
 
-- ClueLib is now on [EDA Playground](http://www.edaplayground.com/x/ua). Check it out!
+- ClueLib is now on [EDA
+  Playground](https://www.edaplayground.com/x/ua). Check it out!
+- The same test from edaplayground can be run from the cloned repo by
+  going to the `test/` directory and running `make <vendor>
+  SV_TOP=eda_demo.sv`. Example: `make xlm SV_TOP=eda_demo.sv`
 
 ### How to install
 
