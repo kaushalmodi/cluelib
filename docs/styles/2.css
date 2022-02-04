@@ -203,17 +203,16 @@ span.rand {
   font-size: xx-small;
 }
 span.under-construction {
-  background-image: url("http://ajax.cluelogic.com/libs/images/fugue-icons/icons/construction.png");
+  background-image: url("/images/construction.png");
   background-repeat: no-repeat;
   width: 16px;
   height: 16px;
   display: inline-block;
 }
 span.new {
-  background-image: url("http://ajax.cluelogic.com/libs/images/fugue-icons/icons/new-text.png");
+  background-image: url("/images/new-text.png");
   background-repeat: no-repeat;
   width: 16px;
   height: 16px;
   display: inline-block;
 }
-
