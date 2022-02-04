@@ -28,7 +28,7 @@
 help:
 	@echo "Usage: make [TARGET]"
 	@echo "  Runs a sanity check."
-	@echo "  TARGET can be 'xlm', 'modelsim', 'questa' or 'vcs'."
+	@echo "  TARGET can be 'xlm', 'modelsim', 'questa', 'vcs' or 'clean'."
 
 # constants
 
@@ -44,6 +44,11 @@ include xcelium.mk
 include modelsim.mk
 include questa.mk
 include vcs.mk
+
+clean:
+	rm -rf *~ core simv* urg* *.log *.history \#*.* *.dump .simvision/ waves.shm/ \
+	core.* simv* csrc* *.tmp *.vpd *.key log temp .vcs* *.txt DVE* *~ \
+	INCA_libs xcelium.d
 
 #===============================================================================
 # Copyright (c) 2013, 2014 ClueLogic, LLC
