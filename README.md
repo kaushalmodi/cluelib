@@ -21,7 +21,7 @@ The latest revision is **0.6.1**.
 ### How to install
 
 1. `git clone https://github.com/kaushalmodi/cluelib`
-2. Go to the **run** directory: `cd cluelib/run`
+2. Go to the **test** directory: `cd cluelib/test`
 3. Check makefile options: `make help`
 4. Run a satity check. Use one of the simulators listed in the previous step:
    Do `make xlm` for example.
@@ -44,7 +44,7 @@ files.
 - By default, DPI-C is disabled. If you want to use the DPI-C,
   uncomment the **CL_USE_DPI_C** macro in `src/cl_define.svh` and
   compile the `src/cl_dpi.cc` with the `src/cl_pkg.sv`.
-- Sample makefiles are available under the **run** directory.
+- Sample makefiles are available under the **test** directory.
 
 ### Pull requests policy
 

@@ -35,7 +35,7 @@ help:
 SV_TOP ?= test_from_examples.sv
 
 src_dir  := ../src
-test_dir := ../test
+test_dir := ./
 compile_files := $(src_dir)/cl_pkg.sv $(src_dir)/cl_dpi.cc $(test_dir)/$(SV_TOP)
 compile_opts  := +incdir+$(src_dir)+$(test_dir)
 top_module    := $(basename $(SV_TOP))

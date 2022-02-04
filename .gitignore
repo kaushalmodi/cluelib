@@ -3,6 +3,7 @@ dev/api/proj/cluelib.css
 *~
 
 # Ignore everything in run/ except for the Makefiles
-run/*
-!run/Makefile
-!run/*.mk
+test/*
+!test/Makefile
+!test/*.mk
+!test/*.sv
