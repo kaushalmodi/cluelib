@@ -28,7 +28,7 @@
 help:
 	@echo "Usage: make [TARGET]"
 	@echo "  Runs a sanity check."
-	@echo "  TARGET can be 'modelsim', 'questa', 'xlm', 'incisive', or 'vcs'."
+	@echo "  TARGET can be 'xlm', 'modelsim', 'questa' or 'vcs'."
 
 # constants
 
@@ -41,7 +41,6 @@ compile_opts  := +incdir+$(src_dir)+$(test_dir)
 top_module    := $(basename $(SV_TOP))
 
 include xcelium.mk
-include incisive.mk
 include modelsim.mk
 include questa.mk
 include vcs.mk
