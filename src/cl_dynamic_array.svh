@@ -770,14 +770,7 @@ virtual class dynamic_array #( type T = bit, int SIZE = 1 );
 
   static function bit contains( const ref T da[],
                                 input T e);
-    bit result = 0;
-    foreach (da[i]) begin
-      if (da[i] == e) begin
-        result = 1;
-        break;
-      end
-    end
-    return result;
+    return ($size(da.find_index with (item == e)) > 0);
   endfunction : contains
 
 endclass: dynamic_array
