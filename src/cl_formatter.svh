@@ -27,7 +27,7 @@
 //==============================================================================
 
 `ifndef CL_FORMATTER_SVH
-`define CL_FORMATTER_SVH
+  `define CL_FORMATTER_SVH
 
 //------------------------------------------------------------------------------
 // Class: formatter
@@ -40,51 +40,51 @@
 
 class formatter #( type T = int );
 
-   //---------------------------------------------------------------------------
-   // Typedef: this_type
-   //   The shorthand of <formatter> *#(T)*.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Typedef: this_type
+  //   The shorthand of <formatter> *#(T)*.
+  //---------------------------------------------------------------------------
 
-   typedef formatter#(T) this_type;
+  typedef formatter#(T) this_type;
 
-   local static this_type inst = null; // need to place after the typedef above
+  local static this_type inst = null; // need to place after the typedef above
 
-   //---------------------------------------------------------------------------
-   // Function: new
-   //   (PROTECTED) Creates a new formatter.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: new
+  //   (PROTECTED) Creates a new formatter.
+  //---------------------------------------------------------------------------
 
-   protected function new();
-   endfunction: new
+  protected function new();
+  endfunction: new
 
-   //---------------------------------------------------------------------------
-   // Function: get_instance
-   //   (STATIC) Returns the singleton instance of this formatter.
-   //
-   // Returns:
-   //   The singleton instance.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: get_instance
+  //   (STATIC) Returns the singleton instance of this formatter.
+  //
+  // Returns:
+  //   The singleton instance.
+  //---------------------------------------------------------------------------
 
-   static function this_type get_instance();
-      if ( inst == null ) inst = new();
-      return inst;
-   endfunction: get_instance
+  static function this_type get_instance();
+    if ( inst == null ) inst = new();
+    return inst;
+  endfunction: get_instance
 
-   //---------------------------------------------------------------------------
-   // Function: to_string
-   //   (VIRTUAL) Returns a string representation of the given object of type
-   //   *T*. This function should be overridden by extended classes.
-   //
-   // Argument:
-   //   o - An object to convert to a string.
-   //
-   // Returns:
-   //   A string, "*obj*", is returned as a placeholder.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: to_string
+  //   (VIRTUAL) Returns a string representation of the given object of type
+  //   *T*. This function should be overridden by extended classes.
+  //
+  // Argument:
+  //   o - An object to convert to a string.
+  //
+  // Returns:
+  //   A string, "*obj*", is returned as a placeholder.
+  //---------------------------------------------------------------------------
 
-   virtual function string to_string( T o );
-      return "obj";
-   endfunction: to_string
+  virtual function string to_string( T o );
+    return "obj";
+  endfunction: to_string
 
 endclass: formatter
 

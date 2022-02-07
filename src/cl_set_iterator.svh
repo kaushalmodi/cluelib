@@ -27,8 +27,8 @@
 //==============================================================================
 
 `ifndef CL_SET_ITERATOR_SVH
-`define CL_SET_ITERATOR_SVH
-`ifndef CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
+  `define CL_SET_ITERATOR_SVH
+  `ifndef CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
 
 typedef class set;
 
@@ -42,83 +42,83 @@ typedef class set;
 
 class set_iterator #( type T = int ) extends iterator#( T );
 
-   local T cur_key;
-   local int cnt;
-   local int aa_size;
+  local T cur_key;
+  local int cnt;
+  local int aa_size;
 
-   //--------------------------------------------------------------------------
-   // Typedef: aa_type
-   //   The shorthand of the associative array type of type *T*.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Typedef: aa_type
+  //   The shorthand of the associative array type of type *T*.
+  //--------------------------------------------------------------------------
 
-   typedef bit aa_type[T];
+  typedef bit aa_type[T];
 
-   //--------------------------------------------------------------------------
-   // Typedef: set_type
-   //   The shorthand of the <set> type of type *T*.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Typedef: set_type
+  //   The shorthand of the <set> type of type *T*.
+  //--------------------------------------------------------------------------
 
-   typedef set#( T ) set_type;
+  typedef set#( T ) set_type;
 
-   local set_type s; // needs to place after the typedef above
+  local set_type s; // needs to place after the typedef above
 
-   //--------------------------------------------------------------------------
-   // Function: new
-   //   Creates a set iterator.
-   //
-   // Argument:
-   //   s - A set to be iterated.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Function: new
+  //   Creates a set iterator.
+  //
+  // Argument:
+  //   s - A set to be iterated.
+  //--------------------------------------------------------------------------
 
-   function new( set_type s );
-      this.s = s;
-      aa_size = s.aa.size();
-      cnt = 0;
-   endfunction: new
+  function new( set_type s );
+    this.s = s;
+    aa_size = s.aa.size();
+    cnt = 0;
+  endfunction: new
 
-   //--------------------------------------------------------------------------
-   // Function: has_next
-   //   (VIRTUAL) Returns 1 if the iterator has more elements.
-   //
-   // Returns:
-   //   If the iterator has more elements, returns 1. Otherwise, returns 0.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Function: has_next
+  //   (VIRTUAL) Returns 1 if the iterator has more elements.
+  //
+  // Returns:
+  //   If the iterator has more elements, returns 1. Otherwise, returns 0.
+  //--------------------------------------------------------------------------
 
-   virtual function bit has_next();
-      return cnt < aa_size;
-   endfunction: has_next
+  virtual function bit has_next();
+    return cnt < aa_size;
+  endfunction: has_next
 
-   //--------------------------------------------------------------------------
-   // Function: next
-   //   (VIRTUAL) Returns the next element.
-   //
-   // Returns:
-   //   The next element in the iterator.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Function: next
+  //   (VIRTUAL) Returns the next element.
+  //
+  // Returns:
+  //   The next element in the iterator.
+  //--------------------------------------------------------------------------
 
-   virtual function T next();
-      if ( cnt == 0 ) begin
-	 assert( s.aa.first( cur_key ) == 1 ); // first() returns 0, 1, or -1
-      end else begin
-	 assert( s.aa.next( cur_key ) == 1 ); // next() returns 0, 1, or -1
-      end
-      cnt++;
-      return cur_key;
-   endfunction: next
+  virtual function T next();
+    if ( cnt == 0 ) begin
+      assert( s.aa.first( cur_key ) == 1 ); // first() returns 0, 1, or -1
+    end else begin
+      assert( s.aa.next( cur_key ) == 1 ); // next() returns 0, 1, or -1
+    end
+    cnt++;
+    return cur_key;
+  endfunction: next
 
-   //--------------------------------------------------------------------------
-   // Function: remove
-   //   (VIRTUAL) Removes the last element returned by the iterator. This
-   //   function can be called once per call to <next>.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Function: remove
+  //   (VIRTUAL) Removes the last element returned by the iterator. This
+  //   function can be called once per call to <next>.
+  //--------------------------------------------------------------------------
 
-   virtual function void remove();
-      void'( s.aa.delete( cur_key ) );
-   endfunction: remove
+  virtual function void remove();
+    void'( s.aa.delete( cur_key ) );
+  endfunction: remove
 
 endclass: set_iterator
 
-`endif //  `ifndef CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
+  `endif //  `ifndef CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
 `endif //  `ifndef CL_SET_ITERATOR_SVH
 
 //==============================================================================

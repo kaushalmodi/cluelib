@@ -26,7 +26,7 @@
 //==============================================================================
 
 `ifndef CL_DEFINE_SVH
-`define CL_DEFINE_SVH
+  `define CL_DEFINE_SVH
 
 // Title: Macro Definitions
 
@@ -95,26 +95,26 @@
 //                          supported. See Section 18 of IEEE 1800-2012.
 //------------------------------------------------------------------------------
 
-`ifdef CL_USE_INCISIVE
+  `ifdef CL_USE_INCISIVE
 //`undef CL_SUPPORT_BIT_STREAM_CASTING
- `undef CL_SUPPORT_FATAL_SEVERITY_TASK
-`endif
+    `undef CL_SUPPORT_FATAL_SEVERITY_TASK
+  `endif
 
-`ifdef CL_USE_MODELSIM
+  `ifdef CL_USE_MODELSIM
 //`define CL_SUPPORT_BIT_STREAM_CASTING
- `undef  CL_SUPPORT_COUNTBITS
- `define CL_SUPPORT_COUNTONES
- `define CL_SUPPORT_FATAL_SEVERITY_TASK
- `undef  CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
- `undef  CL_SUPPORT_POP_FROM_AN_EMPTY_QUEUE
- `undef  CL_SUPPORT_RANDOMIZE
-`endif
+    `undef  CL_SUPPORT_COUNTBITS
+    `define CL_SUPPORT_COUNTONES
+    `define CL_SUPPORT_FATAL_SEVERITY_TASK
+    `undef  CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
+    `undef  CL_SUPPORT_POP_FROM_AN_EMPTY_QUEUE
+    `undef  CL_SUPPORT_RANDOMIZE
+  `endif
 
-`ifdef CL_USE_QUESTA
-`endif
+  `ifdef CL_USE_QUESTA
+  `endif
 
-`ifdef CL_USE_VCS
-`endif
+  `ifdef CL_USE_VCS
+  `endif
 
 `endif //  `ifndef CL_DEFINE_SVH
 

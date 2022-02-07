@@ -27,7 +27,7 @@
 //==============================================================================
 
 `ifndef CL_NETWORK_SVH
-`define CL_NETWORK_SVH
+  `define CL_NETWORK_SVH
 
 //------------------------------------------------------------------------------
 // Class: network
@@ -37,52 +37,52 @@
 
 virtual class network;
 
-   //---------------------------------------------------------------------------
-   // Property: fds
-   //   The dynamic array of file descriptors. It is user's responsibility to
-   //   open the file(s).
-   //
-   // Example:
-   // | network::fds    = new[2];
-   // | network::fds[0] = $fopen( "file0.hex", "w" );
-   // | network::fds[1] = $fopen( "file1.hex", "w" );
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Property: fds
+  //   The dynamic array of file descriptors. It is user's responsibility to
+  //   open the file(s).
+  //
+  // Example:
+  // | network::fds    = new[2];
+  // | network::fds[0] = $fopen( "file0.hex", "w" );
+  // | network::fds[1] = $fopen( "file1.hex", "w" );
+  //---------------------------------------------------------------------------
 
-   static integer fds[];
+  static integer fds[];
 
-   //---------------------------------------------------------------------------
-   // Function: dump
-   //
-   //   (STATIC) Stores a network transaction to the file specified by the *idx*
-   //   using the Wireshark hex format. It is user's responsibility to open the
-   //   file before calling this function.
-   //
-   // Arguments:
-   //   desc - The description of a transaction.
-   //   idx - (OPTIONAL) The index of the file descriptor array. The default
-   //   index is 0.
-   //
-   // Example:
-   // | network::fds    = new[2];
-   // | network::fds[0] = $fopen( "file0.hex", "w" );
-   // | network::fds[1] = $fopen( "file1.hex", "w" );
-   // | network::dump( "000000 01 02 03 04" ); // dump to fds[0] (file0.hex)
-   // | #100;
-   // | network::dump( "000000 11 12 13 14", .idx( 1 ) ); // dump to fds[1] (file1.hex)
-   // |
-   // | /* file0.hex */
-   // | // 0.
-   // | // 000000 01 02 03 04
-   // |
-   // | /* file1.hex */
-   // | // 100.
-   // | // 000000 11 12 13 14
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: dump
+  //
+  //   (STATIC) Stores a network transaction to the file specified by the *idx*
+  //   using the Wireshark hex format. It is user's responsibility to open the
+  //   file before calling this function.
+  //
+  // Arguments:
+  //   desc - The description of a transaction.
+  //   idx - (OPTIONAL) The index of the file descriptor array. The default
+  //   index is 0.
+  //
+  // Example:
+  // | network::fds    = new[2];
+  // | network::fds[0] = $fopen( "file0.hex", "w" );
+  // | network::fds[1] = $fopen( "file1.hex", "w" );
+  // | network::dump( "000000 01 02 03 04" ); // dump to fds[0] (file0.hex)
+  // | #100;
+  // | network::dump( "000000 11 12 13 14", .idx( 1 ) ); // dump to fds[1] (file1.hex)
+  // |
+  // | /* file0.hex */
+  // | // 0.
+  // | // 000000 01 02 03 04
+  // |
+  // | /* file1.hex */
+  // | // 100.
+  // | // 000000 11 12 13 14
+  //---------------------------------------------------------------------------
 
-   static function void dump( string desc, int idx = 0 );
-      time t = $time;
-      $fwrite( fds[idx], "%0d.\n%s\n", t, desc );
-   endfunction: dump
+  static function void dump( string desc, int idx = 0 );
+    time t = $time;
+    $fwrite( fds[idx], "%0d.\n%s\n", t, desc );
+  endfunction: dump
 
 endclass: network
 

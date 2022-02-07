@@ -28,7 +28,7 @@
 // Title: Type Definitions
 
 `ifndef CL_TYPES_SVH
-`define CL_TYPES_SVH
+  `define CL_TYPES_SVH
 
 //------------------------------------------------------------------------------
 // Typedef: string_q

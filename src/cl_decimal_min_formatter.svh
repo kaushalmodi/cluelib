@@ -27,7 +27,7 @@
 //==============================================================================
 
 `ifndef CL_DECIMAL_MIN_FORMATTER_SVH
-`define CL_DECIMAL_MIN_FORMATTER_SVH
+  `define CL_DECIMAL_MIN_FORMATTER_SVH
 
 //------------------------------------------------------------------------------
 // Class: decimal_min_formatter
@@ -41,51 +41,51 @@
 
 class decimal_min_formatter #( type T = int ) extends formatter#( T );
 
-   //---------------------------------------------------------------------------
-   // Typedef: this_type
-   //   The shorthand of <decimal_min_formatter> *#(T)*.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Typedef: this_type
+  //   The shorthand of <decimal_min_formatter> *#(T)*.
+  //---------------------------------------------------------------------------
 
-   typedef decimal_min_formatter#(T) this_type;
+  typedef decimal_min_formatter#(T) this_type;
 
-   local static this_type inst = null;
+  local static this_type inst = null;
 
-   //---------------------------------------------------------------------------
-   // Function: new
-   //   (PROTECTED) Creates a new formatter.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: new
+  //   (PROTECTED) Creates a new formatter.
+  //---------------------------------------------------------------------------
 
-   protected function new();
-   endfunction: new
+  protected function new();
+  endfunction: new
 
-   //---------------------------------------------------------------------------
-   // Function: get_instance
-   //   (STATIC) Returns the singleton instance of this formatter.
-   //
-   // Returns:
-   //   The singleton instance.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: get_instance
+  //   (STATIC) Returns the singleton instance of this formatter.
+  //
+  // Returns:
+  //   The singleton instance.
+  //---------------------------------------------------------------------------
 
-   static function this_type get_instance();
-      if ( inst == null ) inst = new();
-      return inst;
-   endfunction: get_instance
+  static function this_type get_instance();
+    if ( inst == null ) inst = new();
+    return inst;
+  endfunction: get_instance
 
-   //---------------------------------------------------------------------------
-   // Function: to_string
-   //   (VIRTUAL) Returns a string representation of the given object of type
-   //   *T* using the *%0d* format string.
-   //
-   // Argument:
-   //   o - An object to convert to a string.
-   //
-   // Returns:
-   //   A string representing *o*.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: to_string
+  //   (VIRTUAL) Returns a string representation of the given object of type
+  //   *T* using the *%0d* format string.
+  //
+  // Argument:
+  //   o - An object to convert to a string.
+  //
+  // Returns:
+  //   A string representing *o*.
+  //---------------------------------------------------------------------------
 
-   virtual function string to_string( T o );
-      return $sformatf( "%0d", o );
-   endfunction: to_string
+  virtual function string to_string( T o );
+    return $sformatf( "%0d", o );
+  endfunction: to_string
 
 endclass: decimal_min_formatter
 

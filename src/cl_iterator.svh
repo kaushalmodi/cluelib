@@ -27,7 +27,7 @@
 //==============================================================================
 
 `ifndef CL_ITERATOR_SVH
-`define CL_ITERATOR_SVH
+  `define CL_ITERATOR_SVH
 
 //------------------------------------------------------------------------------
 // Class: iterator
@@ -37,26 +37,26 @@
 
 virtual class iterator #( type T = int );
 
-   //---------------------------------------------------------------------------
-   // Function: has_next
-   //   (PURE) (VIRTUAL) Returns 1 if the iteration has more elements.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: has_next
+  //   (PURE) (VIRTUAL) Returns 1 if the iteration has more elements.
+  //---------------------------------------------------------------------------
 
-   pure virtual function bit has_next();
+  pure virtual function bit has_next();
 
-   //---------------------------------------------------------------------------
-   // Function: next
-   //   (PURE) (VIRTUAL) Returns the next element in the iteration.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: next
+  //   (PURE) (VIRTUAL) Returns the next element in the iteration.
+  //---------------------------------------------------------------------------
 
-   pure virtual function T next();
+  pure virtual function T next();
 
-   //---------------------------------------------------------------------------
-   // Function: remove
-   //   (PURE) (VIRTUAL) Removes the last element returned by the iterator.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: remove
+  //   (PURE) (VIRTUAL) Removes the last element returned by the iterator.
+  //---------------------------------------------------------------------------
 
-   pure virtual function void remove();
+  pure virtual function void remove();
 
 endclass: iterator
 

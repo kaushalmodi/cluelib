@@ -26,7 +26,7 @@
 //==============================================================================
 
 `ifndef CL_COMPARATOR_SVH
-`define CL_COMPARATOR_SVH
+  `define CL_COMPARATOR_SVH
 
 //------------------------------------------------------------------------------
 // Class: comparator
@@ -38,144 +38,144 @@
 
 class comparator#( type T = int );
 
-   //---------------------------------------------------------------------------
-   // Typedef: this_type
-   //   The shorthand of <comparator> *#(T)*.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Typedef: this_type
+  //   The shorthand of <comparator> *#(T)*.
+  //---------------------------------------------------------------------------
 
-   typedef comparator#(T) this_type;
+  typedef comparator#(T) this_type;
 
-   local static this_type inst = null; // needs to place after the typedef above
+  local static this_type inst = null; // needs to place after the typedef above
 
-   //---------------------------------------------------------------------------
-   // Function: new
-   //   (PROTECTED) Creates a new comparator.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: new
+  //   (PROTECTED) Creates a new comparator.
+  //---------------------------------------------------------------------------
 
-   protected function new();
-   endfunction: new
+  protected function new();
+  endfunction: new
 
-   //---------------------------------------------------------------------------
-   // Function: get_instance
-   //   (STATIC) Returns the singleton instance of this comparator.
-   //
-   // Returns:
-   //   The singleton instance.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: get_instance
+  //   (STATIC) Returns the singleton instance of this comparator.
+  //
+  // Returns:
+  //   The singleton instance.
+  //---------------------------------------------------------------------------
 
-   static function this_type get_instance();
-      if ( inst == null ) inst = new();
-      return inst;
-   endfunction: get_instance
+  static function this_type get_instance();
+    if ( inst == null ) inst = new();
+    return inst;
+  endfunction: get_instance
 
-   //---------------------------------------------------------------------------
-   // Function: eq
-   //   (VIRTUAL) Returns 1 if two inputs are equal. This function uses the
-   //   logical equality operator (==) for the object comparison.
-   //
-   // Arguments:
-   //   x - An input of type T.
-   //   y - Another input of type T.
-   //
-   // Returns:
-   //   If *x* is equal to *y*, then returns 1. Otherwise, returns 0.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: eq
+  //   (VIRTUAL) Returns 1 if two inputs are equal. This function uses the
+  //   logical equality operator (==) for the object comparison.
+  //
+  // Arguments:
+  //   x - An input of type T.
+  //   y - Another input of type T.
+  //
+  // Returns:
+  //   If *x* is equal to *y*, then returns 1. Otherwise, returns 0.
+  //---------------------------------------------------------------------------
 
-   virtual function bit eq( T x, T y );
-      return x == y;
-   endfunction: eq
+  virtual function bit eq( T x, T y );
+    return x == y;
+  endfunction: eq
 
-   // Operator overloading is not supported?
-   // bind == function bit eq( T x, T y );
+  // Operator overloading is not supported?
+  // bind == function bit eq( T x, T y );
 
-   //---------------------------------------------------------------------------
-   // Function: ne
-   //   (VIRTUAL) Returns 1 if two inputs are not equal.
-   //
-   // Arguments:
-   //   x - An input of type T.
-   //   y - Another input of type T.
-   //
-   // Returns:
-   //   This function returns the negated value of <eq> *(x,y)*.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: ne
+  //   (VIRTUAL) Returns 1 if two inputs are not equal.
+  //
+  // Arguments:
+  //   x - An input of type T.
+  //   y - Another input of type T.
+  //
+  // Returns:
+  //   This function returns the negated value of <eq> *(x,y)*.
+  //---------------------------------------------------------------------------
 
-   virtual function bit ne( T x, T y );
-      return ! eq( x, y );
-   endfunction: ne
+  virtual function bit ne( T x, T y );
+    return ! eq( x, y );
+  endfunction: ne
 
-   //---------------------------------------------------------------------------
-   // Function: lt
-   //   (VIRTUAL) Returns 1 if *x* is less than *y*.
-   //
-   // Arguments:
-   //   x - An input of type T.
-   //   y - Another input of type T.
-   //
-   // Returns:
-   //   This function always returns 0. A subclass should implement this
-   //   function if necessary.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: lt
+  //   (VIRTUAL) Returns 1 if *x* is less than *y*.
+  //
+  // Arguments:
+  //   x - An input of type T.
+  //   y - Another input of type T.
+  //
+  // Returns:
+  //   This function always returns 0. A subclass should implement this
+  //   function if necessary.
+  //---------------------------------------------------------------------------
 
-   virtual function bit lt( T x, T y );
+  virtual function bit lt( T x, T y );
 
-`ifdef CL_SUPPORT_FATAL_SEVERITY_TASK
-      $fatal( 2, "lt() is not defined for %s", $typename( T ) );
-`else
-      $display( "lt() is not defined for %s", $typename( T ) );
-      $finish( 2 );
-`endif
+  `ifdef CL_SUPPORT_FATAL_SEVERITY_TASK
+    $fatal( 2, "lt() is not defined for %s", $typename( T ) );
+  `else
+    $display( "lt() is not defined for %s", $typename( T ) );
+    $finish( 2 );
+  `endif
 
-      return 0; // dummy
-   endfunction: lt
+    return 0; // dummy
+  endfunction: lt
 
-   //---------------------------------------------------------------------------
-   // Function: gt
-   //   (VIRTUAL) Returns 1 if *x* is greater than *y*.
-   //
-   // Arguments:
-   //   x - An input of type T.
-   //   y - Another input of type T.
-   //
-   // Returns:
-   //   This function returns the value of <lt> *(y,x)*.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: gt
+  //   (VIRTUAL) Returns 1 if *x* is greater than *y*.
+  //
+  // Arguments:
+  //   x - An input of type T.
+  //   y - Another input of type T.
+  //
+  // Returns:
+  //   This function returns the value of <lt> *(y,x)*.
+  //---------------------------------------------------------------------------
 
-   virtual function bit gt( T x, T y );
-      return lt( y, x ); // attention (y,x)
-   endfunction: gt
+  virtual function bit gt( T x, T y );
+    return lt( y, x ); // attention (y,x)
+  endfunction: gt
 
-   //---------------------------------------------------------------------------
-   // Function: le
-   //   (VIRTUAL) Returns 1 if *x* is less than or equal to *y*.
-   //
-   // Arguments:
-   //   x - An input of type T.
-   //   y - Another input of type T.
-   //
-   // Returns:
-   //   This function returns the negated value of <gt> *(x,y)*.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: le
+  //   (VIRTUAL) Returns 1 if *x* is less than or equal to *y*.
+  //
+  // Arguments:
+  //   x - An input of type T.
+  //   y - Another input of type T.
+  //
+  // Returns:
+  //   This function returns the negated value of <gt> *(x,y)*.
+  //---------------------------------------------------------------------------
 
-   virtual function bit le( T x, T y );
-      return ! gt( x, y );
-   endfunction: le
+  virtual function bit le( T x, T y );
+    return ! gt( x, y );
+  endfunction: le
 
-   //---------------------------------------------------------------------------
-   // Function: ge
-   //   (VIRTUAL) Returns 1 if *x* is greater than or equal to *y*.
-   //
-   // Arguments:
-   //   x - An input of type T.
-   //   y - Another input of type T.
-   //
-   // Returns:
-   //   This function returns the negated value of <lt> *(x,y)*.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: ge
+  //   (VIRTUAL) Returns 1 if *x* is greater than or equal to *y*.
+  //
+  // Arguments:
+  //   x - An input of type T.
+  //   y - Another input of type T.
+  //
+  // Returns:
+  //   This function returns the negated value of <lt> *(x,y)*.
+  //---------------------------------------------------------------------------
 
-   virtual function bit ge( T x, T y );
-      return ! lt( x, y );
-   endfunction: ge
+  virtual function bit ge( T x, T y );
+    return ! lt( x, y );
+  endfunction: ge
 
 endclass: comparator
 

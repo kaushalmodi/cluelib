@@ -27,7 +27,7 @@
 //==============================================================================
 
 `ifndef CL_PUTIL_SVH
-`define CL_PUTIL_SVH
+  `define CL_PUTIL_SVH
 
 //------------------------------------------------------------------------------
 // Class: putil
@@ -42,29 +42,29 @@
 
 virtual class putil #( type T = int );
 
-   //---------------------------------------------------------------------------
-   // Function: swap
-   //   (STATIC) Swaps two objects.
-   //
-   // Arguments:
-   //   x - An object of type *T*.
-   //   y - Another object of type *T*.
-   //
-   // Example:
-   // | int x = 0;
-   // | int y = 1;
-   // | putil#(int)::swap( x, y );
-   // | assert( x == 1 );
-   // | assert( y == 0 );
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: swap
+  //   (STATIC) Swaps two objects.
+  //
+  // Arguments:
+  //   x - An object of type *T*.
+  //   y - Another object of type *T*.
+  //
+  // Example:
+  // | int x = 0;
+  // | int y = 1;
+  // | putil#(int)::swap( x, y );
+  // | assert( x == 1 );
+  // | assert( y == 0 );
+  //---------------------------------------------------------------------------
 
-   static function void swap( ref T x, ref T y );
-      T tmp;
+  static function void swap( ref T x, ref T y );
+    T tmp;
 
-      tmp = x;
-      x = y;
-      y = tmp;
-   endfunction: swap
+    tmp = x;
+    x = y;
+    y = tmp;
+  endfunction: swap
 
 endclass: putil
 

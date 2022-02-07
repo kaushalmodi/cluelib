@@ -27,7 +27,7 @@
 //==============================================================================
 
 `ifndef CL_STRING_FORMATTER_SVH
-`define CL_STRING_FORMATTER_SVH
+  `define CL_STRING_FORMATTER_SVH
 
 //------------------------------------------------------------------------------
 // Class: string_formatter
@@ -37,43 +37,43 @@
 
 class string_formatter extends formatter#( string );
 
-   local static string_formatter inst = null;
+  local static string_formatter inst = null;
 
-   //---------------------------------------------------------------------------
-   // Function: new
-   //   (PROTECTED) Creates a new formatter.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: new
+  //   (PROTECTED) Creates a new formatter.
+  //---------------------------------------------------------------------------
 
-   protected function new();
-   endfunction: new
+  protected function new();
+  endfunction: new
 
-   //---------------------------------------------------------------------------
-   // Function: get_instance
-   //   (STATIC) Returns the singleton instance of this formatter.
-   //
-   // Returns:
-   //   The singleton instance.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: get_instance
+  //   (STATIC) Returns the singleton instance of this formatter.
+  //
+  // Returns:
+  //   The singleton instance.
+  //---------------------------------------------------------------------------
 
-   static function string_formatter get_instance();
-      if ( inst == null ) inst = new();
-      return inst;
-   endfunction: get_instance
+  static function string_formatter get_instance();
+    if ( inst == null ) inst = new();
+    return inst;
+  endfunction: get_instance
 
-   //---------------------------------------------------------------------------
-   // Function: to_string
-   //   (VIRTUAL) Returns a string representation of the given object of string type.
-   //
-   // Argument:
-   //   o - An object to convert to a string.
-   //
-   // Returns:
-   //   The *o* without change.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: to_string
+  //   (VIRTUAL) Returns a string representation of the given object of string type.
+  //
+  // Argument:
+  //   o - An object to convert to a string.
+  //
+  // Returns:
+  //   The *o* without change.
+  //---------------------------------------------------------------------------
 
-   virtual function string to_string( T o );
-      return o;
-   endfunction: to_string
+  virtual function string to_string( T o );
+    return o;
+  endfunction: to_string
 
 endclass: string_formatter
 

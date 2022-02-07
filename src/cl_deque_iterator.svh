@@ -27,8 +27,8 @@
 //==============================================================================
 
 `ifndef CL_DEQUE_ITERATOR_SVH
-`define CL_DEQUE_ITERATOR_SVH
-`ifndef CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
+  `define CL_DEQUE_ITERATOR_SVH
+  `ifndef CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
 
 typedef class deque;
 
@@ -43,73 +43,73 @@ typedef class deque;
 
 class deque_iterator #( type T = int ) extends iterator#( T );
 
-   local int cur_index;
-   local int q_size;
+  local int cur_index;
+  local int q_size;
 
-   //--------------------------------------------------------------------------
-   // Typedef: deque_type
-   //   The shorthand of the <deque> type of type *T*.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Typedef: deque_type
+  //   The shorthand of the <deque> type of type *T*.
+  //--------------------------------------------------------------------------
 
-   typedef deque#( T ) deque_type;
+  typedef deque#( T ) deque_type;
 
-   local deque_type dq; // needs to place after the typedef above
+  local deque_type dq; // needs to place after the typedef above
 
-   //--------------------------------------------------------------------------
-   // Function: new
-   //   Creates a deque iterator.
-   //
-   // Argument:
-   //   dq - A deque to be iterated.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Function: new
+  //   Creates a deque iterator.
+  //
+  // Argument:
+  //   dq - A deque to be iterated.
+  //--------------------------------------------------------------------------
 
-   function new( deque_type dq );
-      this.dq = dq;
-      q_size = dq.q.size();
-      cur_index = 0;
-   endfunction: new
+  function new( deque_type dq );
+    this.dq = dq;
+    q_size = dq.q.size();
+    cur_index = 0;
+  endfunction: new
 
-   //--------------------------------------------------------------------------
-   // Function: has_next
-   //   (VIRTUAL) Returns 1 if the iterator has more elements.
-   //
-   // Returns:
-   //   If the iterator has more elements, returns 1. Otherwise, returns 0.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Function: has_next
+  //   (VIRTUAL) Returns 1 if the iterator has more elements.
+  //
+  // Returns:
+  //   If the iterator has more elements, returns 1. Otherwise, returns 0.
+  //--------------------------------------------------------------------------
 
-   virtual function bit has_next();
-      return cur_index < q_size;
-   endfunction: has_next
+  virtual function bit has_next();
+    return cur_index < q_size;
+  endfunction: has_next
 
-   //--------------------------------------------------------------------------
-   // Function: next
-   //   (VIRTUAL) Returns the next element.
-   //
-   // Returns:
-   //   The next element in the iterator.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Function: next
+  //   (VIRTUAL) Returns the next element.
+  //
+  // Returns:
+  //   The next element in the iterator.
+  //--------------------------------------------------------------------------
 
-   virtual function T next();
-      return dq.q[cur_index++];
-   endfunction: next
+  virtual function T next();
+    return dq.q[cur_index++];
+  endfunction: next
 
-   //--------------------------------------------------------------------------
-   // Function: remove
-   //   (VIRTUAL) Removes the last element returned by the iterator. This
-   //   function can be called once per call to <next>.
-   //
-   // Returns:
-   //   None.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Function: remove
+  //   (VIRTUAL) Removes the last element returned by the iterator. This
+  //   function can be called once per call to <next>.
+  //
+  // Returns:
+  //   None.
+  //--------------------------------------------------------------------------
 
-   virtual function void remove();
-      dq.q.delete( --cur_index ); // delete at the previous index
-      q_size--;
-   endfunction: remove
+  virtual function void remove();
+    dq.q.delete( --cur_index ); // delete at the previous index
+    q_size--;
+  endfunction: remove
 
 endclass: deque_iterator
 
-`endif //  `ifndef CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
+  `endif //  `ifndef CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
 `endif //  `ifndef CL_DEQUE_ITERATOR_SVH
 
 //==============================================================================

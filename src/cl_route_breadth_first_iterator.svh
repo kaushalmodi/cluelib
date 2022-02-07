@@ -27,8 +27,8 @@
 //==============================================================================
 
 `ifndef CL_ROUTE_BREADTH_FIRST_ITERATOR_SVH
-`define CL_ROUTE_BREADTH_FIRST_ITERATOR_SVH
-`ifndef CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
+  `define CL_ROUTE_BREADTH_FIRST_ITERATOR_SVH
+  `ifndef CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
 
 typedef class route;
 typedef class route_node;
@@ -44,104 +44,104 @@ typedef class route_node;
 
 class route_breadth_first_iterator #( type T = int ) extends iterator#( T );
 
-   // Group: Types
+  // Group: Types
 
-   //---------------------------------------------------------------------------
-   // Typedef: route_node_type
-   //   The shorthand of the <route_node> type specialized with type *T*.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Typedef: route_node_type
+  //   The shorthand of the <route_node> type specialized with type *T*.
+  //---------------------------------------------------------------------------
 
-   typedef route_node#(T) route_node_type;
+  typedef route_node#(T) route_node_type;
 
-   //--------------------------------------------------------------------------
-   // Typedef: route_type
-   //   The shorthand of the <route> type specialized with type *T*.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Typedef: route_type
+  //   The shorthand of the <route> type specialized with type *T*.
+  //--------------------------------------------------------------------------
 
-   typedef route#( T ) route_type;
+  typedef route#( T ) route_type;
 
-   local route_node_type q[$];
-   local int cur_index;
-   local bit visited[ route_node_type ];
+  local route_node_type q[$];
+  local int cur_index;
+  local bit visited[ route_node_type ];
 
-   //--------------------------------------------------------------------------
-   // Function: new
-   //   Creates a route iterator.
-   //
-   // Argument:
-   //   r - A route to be iterated.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Function: new
+  //   Creates a route iterator.
+  //
+  // Argument:
+  //   r - A route to be iterated.
+  //--------------------------------------------------------------------------
 
-   function new( route_type r );
-      if ( r.start ) q.push_back( r.start );
-      cur_index = 0;
-      visited.delete();
-   endfunction: new
+  function new( route_type r );
+    if ( r.start ) q.push_back( r.start );
+    cur_index = 0;
+    visited.delete();
+  endfunction: new
 
-   //--------------------------------------------------------------------------
-   // Function: has_next
-   //   (VIRTUAL) Returns 1 if the iterator has more elements.
-   //
-   // Returns:
-   //   If the iterator has more elements, returns 1. Otherwise, returns 0.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Function: has_next
+  //   (VIRTUAL) Returns 1 if the iterator has more elements.
+  //
+  // Returns:
+  //   If the iterator has more elements, returns 1. Otherwise, returns 0.
+  //--------------------------------------------------------------------------
 
-   virtual function bit has_next();
-      return cur_index < q.size();
-   endfunction: has_next
+  virtual function bit has_next();
+    return cur_index < q.size();
+  endfunction: has_next
 
-   //--------------------------------------------------------------------------
-   // Function: next
-   //   (VIRTUAL) Returns the next element.
-   //
-   // Returns:
-   //   The next element in the iterator.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Function: next
+  //   (VIRTUAL) Returns the next element.
+  //
+  // Returns:
+  //   The next element in the iterator.
+  //--------------------------------------------------------------------------
 
-   virtual function T next();
-      route_node_type rn = next_node();
+  virtual function T next();
+    route_node_type rn = next_node();
 
-      return rn.elem;
-   endfunction: next
+    return rn.elem;
+  endfunction: next
 
-   //--------------------------------------------------------------------------
-   // Function: next_node
-   //   (VIRTUAL) Returns the next <route_node>.
-   //
-   // Returns:
-   //   The next route node in the route.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Function: next_node
+  //   (VIRTUAL) Returns the next <route_node>.
+  //
+  // Returns:
+  //   The next route node in the route.
+  //--------------------------------------------------------------------------
 
-   virtual function route_node_type next_node();
-      route_node_type rn = q[cur_index];
+  virtual function route_node_type next_node();
+    route_node_type rn = q[cur_index];
 
-      foreach ( rn.to_nodes[i] ) begin
-	 if ( ! visited.exists( rn.to_nodes[i] ) ) begin
-	    q.push_back( rn.to_nodes[i] );
-	    visited[ rn.to_nodes[i] ] = 1;
-	 end
+    foreach ( rn.to_nodes[i] ) begin
+      if ( ! visited.exists( rn.to_nodes[i] ) ) begin
+	q.push_back( rn.to_nodes[i] );
+	visited[ rn.to_nodes[i] ] = 1;
       end
-      cur_index++;
+    end
+    cur_index++;
 
-      return rn;
-   endfunction: next_node
+    return rn;
+  endfunction: next_node
 
-   //--------------------------------------------------------------------------
-   // Function: remove
-   //   (VIRTUAL) Removes the last element returned by the iterator. This
-   //   function can be called once per call to <next> or <next_node>.
-   //
-   // Returns:
-   //   None.
-   //--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  // Function: remove
+  //   (VIRTUAL) Removes the last element returned by the iterator. This
+  //   function can be called once per call to <next> or <next_node>.
+  //
+  // Returns:
+  //   None.
+  //--------------------------------------------------------------------------
 
-   virtual function void remove();
-      q.delete( --cur_index ); // delete at the previous index
-   endfunction: remove
+  virtual function void remove();
+    q.delete( --cur_index ); // delete at the previous index
+  endfunction: remove
 
 endclass: route_breadth_first_iterator
 
-`endif //  `ifndef CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
+  `endif //  `ifndef CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
 `endif //  `ifndef CL_ROUTE_BREADTH_FIRST_ITERATOR_SVH
 
 //==============================================================================

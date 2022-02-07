@@ -27,7 +27,7 @@
 //==============================================================================
 
 `ifndef CL_CHOICE_SVH
-`define CL_CHOICE_SVH
+  `define CL_CHOICE_SVH
 
 //------------------------------------------------------------------------------
 // Class: choice
@@ -39,57 +39,57 @@
 
 virtual class choice #( type T = int );
 
-   local static default_comparator#(T) default_cmp = new();
+  local static default_comparator#(T) default_cmp = new();
 
-   //---------------------------------------------------------------------------
-   // Function: min
-   //   (STATIC) Returns the smaller item.
-   //
-   // Arguments:
-   //   x - An item of type *T*.
-   //   y - Another item of type *T*.
-   //   cmp - (OPTIONAL) A strategy object used to compare the items. If not
-   //         specified or *null*, <comparator> *#(T)* is used. The default is
-   //         *null*.
-   //
-   // Example:
-   // | assert( choice#(int)::min( 1, 2 ) == 1 );
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: min
+  //   (STATIC) Returns the smaller item.
+  //
+  // Arguments:
+  //   x - An item of type *T*.
+  //   y - Another item of type *T*.
+  //   cmp - (OPTIONAL) A strategy object used to compare the items. If not
+  //         specified or *null*, <comparator> *#(T)* is used. The default is
+  //         *null*.
+  //
+  // Example:
+  // | assert( choice#(int)::min( 1, 2 ) == 1 );
+  //---------------------------------------------------------------------------
 
-   static function T min( T x, T y, comparator#(T) cmp = null );
-      if ( cmp ) begin
-	 if ( cmp.lt( x, y ) ) return x;
-	 else                  return y;
-      end else begin
-	 if ( default_cmp.lt( x, y ) ) return x;
-	 else                          return y;
-      end
-   endfunction: min
+  static function T min( T x, T y, comparator#(T) cmp = null );
+    if ( cmp ) begin
+      if ( cmp.lt( x, y ) ) return x;
+      else                  return y;
+    end else begin
+      if ( default_cmp.lt( x, y ) ) return x;
+      else                          return y;
+    end
+  endfunction: min
 
-   //---------------------------------------------------------------------------
-   // Function: max
-   //   (STATIC) Returns the larger item.
-   //
-   // Arguments:
-   //   x - An item of type *T*.
-   //   y - Another item of type *T*.
-   //   cmp - (OPTIONAL) A strategy object used to compare the items. If not
-   //         specified or *null*, <comparator> *#(T)* is used. The default is
-   //         *null*.
-   //
-   // Example:
-   // | assert( choice#(int)::max( 1, 2 ) == 2 );
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: max
+  //   (STATIC) Returns the larger item.
+  //
+  // Arguments:
+  //   x - An item of type *T*.
+  //   y - Another item of type *T*.
+  //   cmp - (OPTIONAL) A strategy object used to compare the items. If not
+  //         specified or *null*, <comparator> *#(T)* is used. The default is
+  //         *null*.
+  //
+  // Example:
+  // | assert( choice#(int)::max( 1, 2 ) == 2 );
+  //---------------------------------------------------------------------------
 
-   static function T max( T x, T y, comparator#(T) cmp = null );
-      if ( cmp ) begin
-	 if ( cmp.gt( x, y ) ) return x;
-	 else                  return y;
-      end else begin
-	 if ( default_cmp.gt( x, y ) ) return x;
-	 else                          return y;
-      end
-   endfunction: max
+  static function T max( T x, T y, comparator#(T) cmp = null );
+    if ( cmp ) begin
+      if ( cmp.gt( x, y ) ) return x;
+      else                  return y;
+    end else begin
+      if ( default_cmp.gt( x, y ) ) return x;
+      else                          return y;
+    end
+  endfunction: max
 
 endclass: choice
 

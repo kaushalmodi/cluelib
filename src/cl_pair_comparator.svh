@@ -26,7 +26,7 @@
 //==============================================================================
 
 `ifndef CL_PAIR_COMPARATOR_SVH
-`define CL_PAIR_COMPARATOR_SVH
+  `define CL_PAIR_COMPARATOR_SVH
 
 typedef class pair;
 
@@ -41,71 +41,71 @@ typedef class pair;
 
 class pair_comparator#( type T = pair ) extends comparator#(T);
 
-   //---------------------------------------------------------------------------
-   // Typedef: this_type
-   //   The shorthand of <pair_comparator> *#(T)*.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Typedef: this_type
+  //   The shorthand of <pair_comparator> *#(T)*.
+  //---------------------------------------------------------------------------
 
-   typedef pair_comparator#(T) this_type;
+  typedef pair_comparator#(T) this_type;
 
-   local static this_type inst = null; // needs to place after the typedef above
+  local static this_type inst = null; // needs to place after the typedef above
 
-   //---------------------------------------------------------------------------
-   // Function: new
-   //   (PROTECTED) Creates a new comparator.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: new
+  //   (PROTECTED) Creates a new comparator.
+  //---------------------------------------------------------------------------
 
-   protected function new();
-   endfunction: new
+  protected function new();
+  endfunction: new
 
-   //---------------------------------------------------------------------------
-   // Function: get_instance
-   //   (STATIC) Returns the singleton instance of this comparator.
-   //
-   // Returns:
-   //   The singleton instance.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: get_instance
+  //   (STATIC) Returns the singleton instance of this comparator.
+  //
+  // Returns:
+  //   The singleton instance.
+  //---------------------------------------------------------------------------
 
-   static function this_type get_instance();
-      if ( inst == null ) inst = new();
-      return inst;
-   endfunction: get_instance
+  static function this_type get_instance();
+    if ( inst == null ) inst = new();
+    return inst;
+  endfunction: get_instance
 
-   //---------------------------------------------------------------------------
-   // Function: eq
-   //   (VIRTUAL) Returns 1 if two pairs are equal.
-   //
-   // Arguments:
-   //   x - A pair.
-   //   y - Another pair.
-   //
-   // Returns:
-   //   If *x.first* is equal to *y.first* and *x.second* is equal to
-   //   *y.second*, then returns 1. Otherwise, returns 0.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: eq
+  //   (VIRTUAL) Returns 1 if two pairs are equal.
+  //
+  // Arguments:
+  //   x - A pair.
+  //   y - Another pair.
+  //
+  // Returns:
+  //   If *x.first* is equal to *y.first* and *x.second* is equal to
+  //   *y.second*, then returns 1. Otherwise, returns 0.
+  //---------------------------------------------------------------------------
 
-   virtual function bit eq( T x, T y );
-      return x.first == y.first && x.second == y.second;
-   endfunction: eq
+  virtual function bit eq( T x, T y );
+    return x.first == y.first && x.second == y.second;
+  endfunction: eq
 
-   //---------------------------------------------------------------------------
-   // Function: lt
-   //   (VIRTUAL) Returns 1 if *x* is less than *y*. Compares *x.first* and
-   //   *y.first*. If equal, then compares *x.second* and *y.second*.
-   //
-   // Arguments:
-   //   x - A pair.
-   //   y - Another pair.
-   //
-   // Returns:
-   //   Returns 1 if *x* is less than *y*. Otherwise, returns 0.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: lt
+  //   (VIRTUAL) Returns 1 if *x* is less than *y*. Compares *x.first* and
+  //   *y.first*. If equal, then compares *x.second* and *y.second*.
+  //
+  // Arguments:
+  //   x - A pair.
+  //   y - Another pair.
+  //
+  // Returns:
+  //   Returns 1 if *x* is less than *y*. Otherwise, returns 0.
+  //---------------------------------------------------------------------------
 
-   virtual function bit lt( T x, T y );
-      if ( x.first < y.first ) return 1;
-      else if ( x.first > y.first ) return 0;
-      else return x.second < y.second;
-   endfunction: lt
+  virtual function bit lt( T x, T y );
+    if ( x.first < y.first ) return 1;
+    else if ( x.first > y.first ) return 0;
+    else return x.second < y.second;
+  endfunction: lt
 
 endclass: pair_comparator
 

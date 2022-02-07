@@ -26,7 +26,7 @@
 //==============================================================================
 
 `ifndef CL_DEFAULT_COMPARATOR_SVH
-`define CL_DEFAULT_COMPARATOR_SVH
+  `define CL_DEFAULT_COMPARATOR_SVH
 
 //------------------------------------------------------------------------------
 // Class: default_comparator
@@ -38,39 +38,39 @@
 
 class default_comparator#( type T = int ) extends comparator#(T);
 
-   //---------------------------------------------------------------------------
-   // Function: lt
-   //   (VIRTUAL) Returns 1 if *x* is less than *y*. Uses the binary relational
-   //   operator (*<*) to compare the objects.
-   //
-   // Arguments:
-   //   x - An input of type T.
-   //   y - Another input of type T.
-   //
-   // Returns:
-   //   The value of *x < y*.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: lt
+  //   (VIRTUAL) Returns 1 if *x* is less than *y*. Uses the binary relational
+  //   operator (*<*) to compare the objects.
+  //
+  // Arguments:
+  //   x - An input of type T.
+  //   y - Another input of type T.
+  //
+  // Returns:
+  //   The value of *x < y*.
+  //---------------------------------------------------------------------------
 
-   virtual function bit lt( T x, T y );
-      return x < y;
-   endfunction: lt
+  virtual function bit lt( T x, T y );
+    return x < y;
+  endfunction: lt
 
-   //---------------------------------------------------------------------------
-   // Function: gt
-   //   (VIRTUAL) Returns 1 if *x* is greater than *y*. Uses the binary
-   //   relational operator (*>*) to compare the objects.
-   //
-   // Arguments:
-   //   x - An input of type T.
-   //   y - Another input of type T.
-   //
-   // Returns:
-   //   The value of *x > y*.
-   //---------------------------------------------------------------------------
+  //---------------------------------------------------------------------------
+  // Function: gt
+  //   (VIRTUAL) Returns 1 if *x* is greater than *y*. Uses the binary
+  //   relational operator (*>*) to compare the objects.
+  //
+  // Arguments:
+  //   x - An input of type T.
+  //   y - Another input of type T.
+  //
+  // Returns:
+  //   The value of *x > y*.
+  //---------------------------------------------------------------------------
 
-   virtual function bit gt( T x, T y );
-      return x > y;
-   endfunction: gt
+  virtual function bit gt( T x, T y );
+    return x > y;
+  endfunction: gt
 
 endclass: default_comparator
 
