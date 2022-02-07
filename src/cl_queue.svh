@@ -716,6 +716,28 @@ virtual class queue #( type T = bit, int SIZE = 1 );
       to_string( q, separator, from_index, to_index, fmtr );
   endfunction: to_string
 
+  //---------------------------------------------------------------------------
+  // Function: contains
+  //   (STATIC) Returns 1 if queue contains the specified element.
+  //
+  // Arguments:
+  //   q - Container queue.
+  //   e - An element to be checked.
+  //
+  // Returns:
+  //   If *q* contains *e*, returns 1. Otherwise, returns 0.
+  //
+  // Example:
+  // | int q[$] = { 3 };
+  // | assert( queue#(int)::contains( q, 3 ) == 1 );
+  // | assert( queue#(int)::contains( q, 4 ) == 0 );
+  //---------------------------------------------------------------------------
+
+  static function bit contains( const ref T q[$],
+                                input T e);
+    return ($size(q.find_index with (item == e)) > 0);
+  endfunction : contains
+
 endclass: queue
 
 `endif //  `ifndef CL_QUEUE_SVH

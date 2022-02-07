@@ -1053,6 +1053,11 @@ module test_from_examples;
       assert( dynamic_array#(bit,8)::to_string( da, .separator( "-" ) ) == "0-0-0-1-1-0-1-1" );
       assert( dynamic_array#(bit,8)::to_string( da, .from_index( 4 )  ) ==         "1 0 1 1" );
     end
+    begin
+      int da[] = new[1]( '{ 3 } );
+      assert( dynamic_array#(int)::contains( da, 3 ) == 1 );
+      assert( dynamic_array#(int)::contains( da, 4 ) == 0 );
+    end
     // test ../src/cl_journal.svh
     begin
       journal::log_fd = $fopen( "journal.log", "w" );
@@ -1561,6 +1566,11 @@ module test_from_examples;
       assert( queue#(bit,8)::to_string( q )                    == "0 0 0 1 1 0 1 1" );
       assert( queue#(bit,8)::to_string( q, .separator( "-" ) ) == "0-0-0-1-1-0-1-1" );
       assert( queue#(bit,8)::to_string( q, .from_index( 4 )  ) ==         "1 0 1 1" );
+    end
+    begin
+      int q[$] = { 3 };
+      assert( queue#(int)::contains( q, 3 ) == 1 );
+      assert( queue#(int)::contains( q, 4 ) == 0 );
     end
     // test ../src/cl_route.svh
     begin

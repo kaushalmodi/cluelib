@@ -751,6 +751,35 @@ virtual class dynamic_array #( type T = bit, int SIZE = 1 );
       to_string( da, separator, from_index, to_index, fmtr );
   endfunction: to_string
 
+  //---------------------------------------------------------------------------
+  // Function: contains
+  //   (STATIC) Returns 1 if dynamic array contains the specified element.
+  //
+  // Arguments:
+  //   da - Container dynamic_array.
+  //   e - An element to be checked.
+  //
+  // Returns:
+  //   If *da* contains *e*, returns 1. Otherwise, returns 0.
+  //
+  // Example:
+  // | int da[$] = new[1]( '{ 3 } );
+  // | assert( dynamic_array#(int)::contains( da, 3 ) == 1 );
+  // | assert( dynamic_array#(int)::contains( da, 4 ) == 0 );
+  //---------------------------------------------------------------------------
+
+  static function bit contains( const ref T da[],
+                                input T e);
+    bit result = 0;
+    foreach (da[i]) begin
+      if (da[i] == e) begin
+        result = 1;
+        break;
+      end
+    end
+    return result;
+  endfunction : contains
+
 endclass: dynamic_array
 
 `endif //  `ifndef CL_DYNAMIC_ARRAY_SVH
