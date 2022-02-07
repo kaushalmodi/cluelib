@@ -63,13 +63,13 @@
 //   These macros enable a set of <Supported Features> based on the selected
 //   simulator. Only one simulator should be enabled at one time.
 //
-//   CL_USE_INCISIVE - Use Incisive Enterpirse Simulator from Cadence Design Systems.
+//   CL_USE_XCELIUM - Use Incisive Enterpirse Simulator from Cadence Design Systems.
 //   CL_USE_MODELSIM - Use ModelSim from Mentor Graphics.
 //   CL_USE_QUESTA   - Use Questa from Mentor Graphics.
 //   CL_USE_VCS      - Use VCS from Synopsys.
 //------------------------------------------------------------------------------
 
-//`define CL_USE_INCISIVE
+//`define CL_USE_XCELIUM
 //`define CL_USE_MODELSIM
 //`define CL_USE_QUESTA
 //`define CL_USE_VCS
@@ -95,7 +95,7 @@
 //                          supported. See Section 18 of IEEE 1800-2012.
 //------------------------------------------------------------------------------
 
-  `ifdef CL_USE_INCISIVE
+  `ifdef CL_USE_XCELIUM
 //`undef CL_SUPPORT_BIT_STREAM_CASTING
     `undef CL_SUPPORT_FATAL_SEVERITY_TASK
   `endif

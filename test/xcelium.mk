@@ -31,7 +31,7 @@
 
 # constants
 
-xcelium_compile_opts := $(compile_opts) +define+CL_USE_INCISIVE
+xcelium_compile_opts := $(compile_opts) +define+CL_USE_XCELIUM
 xcelium_run_opts     :=
 
 # targets
