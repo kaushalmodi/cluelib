@@ -12,10 +12,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -88,26 +88,20 @@
 //   CL_SUPPORT_PARAMETERIZED_NESTED_CLASS - If defined, a parameterized nested
 //                                           class is used. See Section 8.25 of
 //                                           IEEE 1800-2012.
-//   CL_SUPPORT_POP_FROM_AN_EMPTY_QUEUE - If defined, a pop from an empty queue
-//                                        is supported. See Section 7.10.2.4 and
-//                                        7.10.2.5 of IEEE 1800-2012.
-//   CL_SUPPORT_RANDOMIZE - If defined, constrained random value generation is
-//                          supported. See Section 18 of IEEE 1800-2012.
 //------------------------------------------------------------------------------
 
   `ifdef CL_USE_XCELIUM
-//`undef CL_SUPPORT_BIT_STREAM_CASTING
-    `undef CL_SUPPORT_FATAL_SEVERITY_TASK
+    `define CL_SUPPORT_COUNTBITS
+    `define CL_SUPPORT_COUNTONES
+    `define CL_SUPPORT_FATAL_SEVERITY_TASK
+    `undef CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
   `endif
 
   `ifdef CL_USE_MODELSIM
-//`define CL_SUPPORT_BIT_STREAM_CASTING
     `undef  CL_SUPPORT_COUNTBITS
     `define CL_SUPPORT_COUNTONES
     `define CL_SUPPORT_FATAL_SEVERITY_TASK
     `undef  CL_SUPPORT_PARAMETERIZED_NESTED_CLASS
-    `undef  CL_SUPPORT_POP_FROM_AN_EMPTY_QUEUE
-    `undef  CL_SUPPORT_RANDOMIZE
   `endif
 
   `ifdef CL_USE_QUESTA
