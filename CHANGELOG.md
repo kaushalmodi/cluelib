@@ -1,11 +1,15 @@
 ## Changelog
 
+### 0.7.3
+- Added queue(T)::contains and dynamic_array(T)::contains functions.
+- Auto-indented all SystemVerilog files.
+
 ### 0.7.2
 - Minor cleanup in README files, and RELEASE.md renamed to
   CHANGELOG.md.
 
 ### 0.7.1
-- Delete `dev/` directory from the `main` branch. It is now available
+- Deleted `dev/` directory from the `main` branch. It is now available
   in the `dev` branch.
 
 ### 0.7.0
@@ -14,7 +18,7 @@
 - Consolidated `run/` and `test/` content into the `test/` directory.
 - `api/` content is moved to `docs/` directory in `docs` branch. Docs
   hosted at https://kaushalmodi.github.io/cluelib/ .
-- Add the Cluelib test from edaplayground to the repo.
+- Added the Cluelib test from edaplayground to the repo.
 
 ### v0.6.1
 - Added `route_node::id` property.
