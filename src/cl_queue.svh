@@ -735,7 +735,7 @@ virtual class queue #( type T = bit, int SIZE = 1 );
 
   static function bit contains( const ref T q[$],
                                 input T e);
-    return ($size(q.find_index with (item == e)) > 0);
+    return ($size(q.find_first_index with (item == e)) > 0);
   endfunction : contains
 
 endclass: queue
